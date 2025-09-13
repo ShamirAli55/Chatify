@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <div className="px-22">
+          <div className="px-12 md:px-22">
             <Navbar />
             <div>{children}</div>
             <Footer />

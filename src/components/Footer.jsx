@@ -1,4 +1,3 @@
-import { Tags } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
@@ -77,22 +76,21 @@ const Footer = () => {
             <Image src={"/logo.png"} alt='logo' width={30} height={30} className='mx-auto'/>
             <p className='text-sm py-3 w-2/3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad vero expedita delectus veniam sit.</p>
         </div>
-        <div className="flex items-center justify-evenly w-1/2 text-md">   
+        <div className="flex items-center justify-around w-1/2 text-md">   
             <div>
-                <h3 className='pb-1 font-semibold opacity-80'>Links</h3>
+                <h3 className='pb-1 font-semibold opacity-70'>Links</h3>
                 {items.Links.map((link)=>(
                     <p key={link.id} className='cursor-pointer hover:underline'>{link.name}</p>
                 ))}
             </div>
-
             <div>
-                <h3 className='pb-1 font-semibold opacity-80'>Tags</h3>
+                <h3 className='pb-1 font-semibold opacity-70'>Tags</h3>
                 {items.Tags.map((tag)=>(
                     <p key={tag.id} className='cursor-pointer hover:underline flex items-center gap-2'>{tag.name}</p>
                 ))}
             </div>
             <div>
-                <h3 className='pb-1 font-semibold opacity-80'>Socials</h3>
+                <h3 className='pb-1 font-semibold opacity-70'>Socials</h3>
                 {items.Socials.map((social)=>(
                     <p key={social.id} className='cursor-pointer hover:underline'>{social.name}</p>
                 ))}
