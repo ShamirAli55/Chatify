@@ -1,9 +1,12 @@
-import React from 'react'
-
-const page = () => {
+import { ModeToggle } from "@/components/ThemeToggle"
+export default function Home() {
   return (
-    <div className="text-3xl text-red-400">page</div>
+    <div>
+
+    <h1 className="text-3xl font-bold">
+      Hello world!
+    </h1>
+      <ModeToggle/>
+    </div>
   )
 }
-
-export default page
