@@ -7,7 +7,7 @@ import { useTheme } from "next-themes"
 export function ModeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
-
+  
   React.useEffect(() => {
     setMounted(true)
   }, [])
@@ -21,12 +21,12 @@ export function ModeToggle() {
   return (
     <div
       onClick={toggleTheme}
-      className="flex items-center justify-between gap-x-2 cursor-pointer border rounded-full px-1 py-0.5 relative overflow-hidden w-14"
+      className="flex items-center justify-between gap-x-2 cursor-pointer border border-border rounded-full px-1 py-0.5 relative overflow-hidden w-14"
     >
-      <Sun size={15} />
-      <Moon size={15} />
+      <Sun size={15}   />
+      <Moon size={15}  />
       <div
-        className={`h-4 w-4 rounded-full absolute bg-green-500 top-0.5 transition-all ${
+        className={`h-4 w-4 rounded-full absolute bg-primary top-0.5 transition-all ${
           isDark ? "right-1" : "left-1"
         }`}
       />
