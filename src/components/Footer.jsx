@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const items={
@@ -80,19 +81,20 @@ const Footer = () => {
             <div>
                 <h3 className='pb-1 font-semibold opacity-70'>Links</h3>
                 {items.Links.map((link)=>(
-                    <p key={link.id} className='cursor-pointer hover:underline'>{link.name}</p>
+                    <Link href={link.url} key={link.id} className='cursor-pointer hover:underline block'>{link.name}</Link>
                 ))}
             </div>
             <div>
                 <h3 className='pb-1 font-semibold opacity-70'>Tags</h3>
                 {items.Tags.map((tag)=>(
-                    <p key={tag.id} className='cursor-pointer hover:underline flex items-center gap-2'>{tag.name}</p>
+                    <Link href={tag.url}key={tag.id} className='cursor-pointer hover:underline flex items-center gap-2'>{tag.name}</Link>
                 ))}
             </div>
             <div>
                 <h3 className='pb-1 font-semibold opacity-70'>Socials</h3>
                 {items.Socials.map((social)=>(
-                    <p key={social.id} className='cursor-pointer hover:underline'>{social.name}</p>
+                    <Link href={social.url}
+                     key={social.id} className='cursor-pointer hover:underline block'>{social.name}</Link>
                 ))}
             </div>
         </div>

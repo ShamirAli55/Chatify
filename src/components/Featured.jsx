@@ -6,7 +6,7 @@ const Featured = () => {
     <div>
       <h1><b>Hey there !</b> Discover my stories and creative ideas.</h1>
       <div>
-        <div>
+        <div className='relative w-[200px] h-[200px]'>
           <Image src={"/p1.jpeg"} alt='' fill/>
         </div>
         <div>
