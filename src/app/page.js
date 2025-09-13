@@ -1,4 +1,3 @@
-import { ModeToggle } from "@/components/ThemeToggle"
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground">
@@ -6,7 +5,6 @@ export default function Home() {
     <h1 className="text-3xl font-bold bg-destructive">
       Hello world!
     </h1>
-      <ModeToggle/>
     </div>
   )
 }
