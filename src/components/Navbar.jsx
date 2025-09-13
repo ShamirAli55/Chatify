@@ -35,6 +35,7 @@ const Navbar = () => {
         <div className='hidden md:flex items-center'>
         
         <ModeToggle/>
+        
         {links.map((link)=>(
             <Link key={link.id} href={link.url} className='text-md px-3'>{link.name}</Link>
         ))}
