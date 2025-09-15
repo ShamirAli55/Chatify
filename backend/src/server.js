@@ -1,24 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
+import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
 
 dotenv.config();
 const app = express();
 
-app.get("/",(req,res)=>{
-  res.send("homees")
-})
-
-app.get("/api/auth/signup", (req, res) => {
-  res.send("hello");
+app.get("/", (req, res) => {
+  res.send("homees");
 });
 
-app.get("/api/auth/login", (req, res) => {
-  res.send("Login");
-});
+app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
 
-app.get("/api/auth/logout", (req, res) => {
-  res.send("Logout");
-});
 
 const PORT = process.env.PORT || 5000;
 
