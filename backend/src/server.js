@@ -11,6 +11,8 @@ app.get("/", (req, res) => {
   res.send("homees");
 });
 
+app.use(express.json());
+
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
