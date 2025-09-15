@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import { generateToken } from "../lib/utils.js";
 import bcrypt from "bcryptjs";
+
 export const signup = async (req, res) => {
   const { fullName, email, password } = req.body;
 
@@ -76,4 +77,8 @@ export const login = async (req, res) => {
 export const logout = (_, res) => {
   res.cookie("jwt", "", { maxAge: 0 });
   res.status(200).json({ message: "Logged out successfully" });
+};
+
+export const updateProfile = () => {
+  
 };
