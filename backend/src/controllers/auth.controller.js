@@ -35,15 +35,24 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = new User({ fullName, email, password: hashedPassword });
+    
     if (newUser) {
       const savedUser = await newUser.save();
       generateToken(savedUser._id, res);
       res.status(201).json({
+
+    if (newUser) 
+    {
+     const savedUser = await newUser.save();
+      generateToken(savedUser._id, res);
+      return res.status(201).json({
+
         _id: newUser._id,
         fullName: newUser.fullName,
         email: newUser.email,
         profilePic: newUser.profilePic,
       });
+
       try 
       {
         await sendWelcomeEmail(savedUser.email, savedUser.fullName, process.env.CLIENT_URL);
@@ -51,6 +60,10 @@ export const signup = async (req, res) => {
         console.error("Error sending welcome email:", error);
       }
     } else {
+    } 
+    else 
+    {
+
       return res.status(500).json({ message: "Internal server error" });
     }
   } catch (error) {
