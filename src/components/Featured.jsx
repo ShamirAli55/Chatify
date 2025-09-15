@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import CategoryList from './categoryList/CategoryList'
 
 const Featured = () => {
   return (
@@ -13,12 +14,13 @@ const Featured = () => {
 
         <div className='p-4 pl-0 w-1/2 h-full flex justify-center items-center gap-4'>
            <div>
-            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, totam?</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae impedit ratione, natus magni repudiandae quaerat non, libero mollitia est totam vero ut eligendi facere pariatur excepturi eveniet, quasi repellendus blanditiis.</p>
-            <button>Read more</button>
+            <h1 className="font-bold text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, totam?</h1>
+            <p className='font-semibold text-md py-8'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae impedit ratione, natus magni repudiandae quaerat non, libero mollitia est totam vero ut eligendi facere pariatur excepturi eveniet, quasi repellendus blanditiis.</p>
+            <button className='bg-primary text-primary-foreground px-4 py-2 rounded-md hover:cursor-pointer'>Read more</button>
            </div>
         </div>
       </div>
+          <CategoryList/>
     </div>
   )
 }

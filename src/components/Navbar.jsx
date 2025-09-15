@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import {ModeToggle} from "./ThemeToggle"
+import AuthLinks from './authLinks/AuthLinks'
 const links=[
     {
         id:"1",
@@ -15,12 +16,7 @@ const links=[
         id:"3",
         name:"About",
         url:"/about"
-    },
-    {
-        id:"4",
-        name:"login",
-        url:"/login"
-    },
+    }
 ]
 const Navbar = () => {
 
@@ -40,6 +36,7 @@ const Navbar = () => {
             <Link key={link.id} href={link.url} className='text-md px-3'>{link.name}</Link>
         ))}
         </div>
+        <AuthLinks/>
     </nav>  
 )
 }
