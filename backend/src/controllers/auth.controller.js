@@ -1,6 +1,11 @@
 import User from "../models/User.js";
 import { generateToken } from "../lib/utils.js";
+import { sendWelcomeEmail } from "../emails/emailHandlers.js";
 import bcrypt from "bcryptjs";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 export const signup = async (req, res) => {
   const { fullName, email, password } = req.body;
 
@@ -30,19 +35,35 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = new User({ fullName, email, password: hashedPassword });
+    
+    if (newUser) {
+      const savedUser = await newUser.save();
+      generateToken(savedUser._id, res);
+      res.status(201).json({
+
     if (newUser) 
     {
      const savedUser = await newUser.save();
       generateToken(savedUser._id, res);
       return res.status(201).json({
+
         _id: newUser._id,
         fullName: newUser.fullName,
         email: newUser.email,
         profilePic: newUser.profilePic,
       });
+
+      try 
+      {
+        await sendWelcomeEmail(savedUser.email, savedUser.fullName, process.env.CLIENT_URL);
+      } catch (error) {
+        console.error("Error sending welcome email:", error);
+      }
+    } else {
     } 
     else 
     {
+
       return res.status(500).json({ message: "Internal server error" });
     }
   } catch (error) {
@@ -64,6 +85,7 @@ export const login = (req, res) => {
   }
 };
 
-export const logout = (req, res) => {
-  res.send("Logout");
+export const logout = (_, res) => {
+  res.cookie("jwt", "", { maxAge: 0 });
+  res.status(200).json({ message: "Logged out successfully" });
 };
