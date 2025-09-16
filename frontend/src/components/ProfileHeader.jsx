@@ -4,29 +4,30 @@ import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
 
 const mouseClickSound = new Audio("/sounds/mouse-click.mp3");
-const ProfileHeader = () => {
+
+function ProfileHeader() {
   const { logout, authUser, updateProfile } = useAuthStore();
   const { isSoundEnabled, toggleSound } = useChatStore();
   const [selectedImg, setSelectedImg] = useState(null);
 
   const fileInputRef = useRef(null);
 
-  const handleImageUpload = (e)=>{
+  const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    if(!file) return;
+    if (!file) return;
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
-    reader.onload = async ()=>
-    {
+    reader.onloadend = async () => {
       const base64Image = reader.result;
       setSelectedImg(base64Image);
-      await updateProfile({profilePic:base64Image});
-    }
-  }
+      await updateProfile({ profilePic: base64Image });
+    };
+  };
+
   return (
- <div className="p-6 border-b border-slate-700/50">
+    <div className="p-6 border-b border-slate-700/50">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           {/* AVATAR */}
@@ -81,7 +82,7 @@ const ProfileHeader = () => {
               // play click sound before toggling
               mouseClickSound.currentTime = 0; // reset to start
               mouseClickSound.play().catch((error) => console.log("Audio play failed:", error));
-              toggleSound(); 
+              toggleSound();
             }}
           >
             {isSoundEnabled ? (
@@ -93,7 +94,6 @@ const ProfileHeader = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-export default ProfileHeader
+export default ProfileHeader;
