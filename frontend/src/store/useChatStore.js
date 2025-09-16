@@ -15,12 +15,15 @@ export const useChatStore = create((set, get) => ({
     localStorage.setItem("isSoundEnabled", !get().isSoundEnabled);
     set({ isSoundEnabled: !get().isSoundEnabled });
   },
+
   setActiveTab: (tab) => {
     set({ activeTab: tab });
   },
+
   setSelectedUser: (selectedUser) => {
     set({ selectedUser });
   },
+
   getAllContacts: async () => {
     set({ isUsersLoading: true });
     try {
@@ -32,6 +35,7 @@ export const useChatStore = create((set, get) => ({
       set({ isUsersLoading: false });
     }
   },
+
   getMyChatPartners: async () => {
     set({ isUsersLoading: true });
     try {
@@ -41,6 +45,18 @@ export const useChatStore = create((set, get) => ({
       toast.error(error.response.data.message);
     } finally {
       set({ isUsersLoading: false });
+    }
+  },
+
+  getMessageByUserId: async (userId) => {
+    set({ isMessagesLoading: true });
+    try {
+      const res = axiosInstance.get(`/messages/${userId}`);
+      set({ messages: res.data });
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Something went wrong");
+    } finally {
+      set({ isMessagesLoading: false });
     }
   },
   
