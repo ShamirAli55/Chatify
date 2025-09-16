@@ -4,11 +4,11 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import path from "path";
 import cors from "cors";
+import {app, server} from "./lib/socket.js";
 import connectDB from "./lib/db.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
-const app = express();
 const __dirname = path.resolve();
 
 app.use(express.json({ limit: "5mb" }));
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log("Server is running on port : ", PORT);
   connectDB();
 });
