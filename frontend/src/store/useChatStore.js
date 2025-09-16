@@ -79,11 +79,9 @@ export const useChatStore = create((set, get) => ({
     // immidetaly update the ui by adding the message
     set({ messages: [...messages, optimisticMessage] });
 
-    try {
-      const res = await axiosInstance.post(
-        `/messages/send/${selectedUser._id}`,
-        messageData
-      );
+    try 
+    {
+      const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`,messageData);
       set({ messages: messages.concat(res.data) });
     } catch (error) {
       set({ messages: messages });
